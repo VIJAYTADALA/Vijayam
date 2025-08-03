@@ -1,29 +1,10 @@
 import streamlit as st
-
 class Config:
-    @staticmethod
-    def get_mongo_config():
-        return {
-            "uri": st.secrets["mongo"]["uri"],
-            "dbname": st.secrets["mongo"]["dbname"]
-        }
-    
-    @staticmethod
-    def get_auth_config():
-        return {
-            "cookie_name": "donation_app",
-            "key": "abcdef",
-            "cookie_expiry_days": 30,
-            "credentials": {
-                "usernames": {
-                    "admin": {
-                        "name": "Admin User",
-                        "password": st.secrets["auth"]["admin_password"]
-                    },
-                    "user": {
-                        "name": "Regular User",
-                        "password": st.secrets["auth"]["user_password"]
-                    }
-                }
-            }
-        }
+    MONGO_URI = st.secrets["mongo"]["uri"]
+    DB_NAME = st.secrets["mongo"]["dbname"]
+    COLLECTION_NAME = "donations"
+    ITEMS_PER_PAGE = 10
+    ADMIN_USERNAME = st.secrets["auth"]["admin_username"]
+    ADMIN_PASSWORD = st.secrets["auth"]["admin_password"]
+    USER_USERNAME = st.secrets["auth"]["user_username"]
+    USER_PASSWORD = st.secrets["auth"]["user_password"]
